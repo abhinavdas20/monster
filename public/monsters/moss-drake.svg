@@ -1,0 +1,7 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#15803d"/></linearGradient></defs>
+  <rect width="256" height="256" rx="32" fill="#111827"/>
+  <ellipse cx="128" cy="132" rx="72" ry="64" fill="url(#g)"/>
+  <path d="M76 100l30-26 18 20 30-18 22 18 24-18 12 30-26 18 12 34-28-12-24 18-18-20-32 12-18-26 26-22-8-18z" fill="#bbf7d0" opacity="0.8"/>
+  <text x="128" y="220" font-family="Arial" font-size="22" text-anchor="middle" fill="#fff">Moss Drake</text>
+</svg>

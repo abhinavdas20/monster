@@ -1,0 +1,44 @@
+{
+  "name": "monster",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "jest --runInBand",
+    "test:api": "node --env-file-if-exists=.env scripts/api-smoke.mjs",
+    "prisma:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "node --env-file-if-exists=.env --experimental-strip-types prisma/seed.ts",
+    "perf": "node scripts/api-performance.mjs"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "framer-motion": "^14.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/jest": "^30.0.0",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20",
+    "prisma": "^6.19.3",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.0",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2",
+    "tailwindcss": "^4",
+    "ts-jest": "^29.4.14",
+    "typescript": "^5"
+  }
+}

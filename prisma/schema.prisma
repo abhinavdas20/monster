@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Player {
+  id               String          @id @default(cuid())
+  username         String
+  usernameNormalized String        @unique
+  passwordHash     String
+  createdAt        DateTime        @default(now())
+  collection       PlayerMonster[]
+  teams            Team[]
+  encounters       Encounter[]
+}
+
+model Monster {
+  id          String             @id @default(cuid())
+  name        String
+  description String
+  imageUrl    String
+  emoji       String
+  attack      Int
+  defense     Int
+  speed       Int
+  element     String
+  rarity      String
+  createdAt   DateTime           @default(now())
+  ownedBy     PlayerMonster[]
+  teamLinks   TeamMonster[]
+  wildEncounters Encounter[]     @relation("WildMonster")
+  rewards     Encounter[]        @relation("RewardMonster")
+}
+
+model PlayerMonster {
+  id         String   @id @default(cuid())
+  playerId   String
+  monsterId  String
+  obtainedAt DateTime @default(now())
+  player     Player   @relation(fields: [playerId], references: [id])
+  monster    Monster  @relation(fields: [monsterId], references: [id])
+
+  @@unique([playerId, monsterId])
+  @@index([playerId])
+}
+
+model Team {
+  id        String        @id @default(cuid())
+  name      String
+  playerId  String
+  createdAt DateTime      @default(now())
+  player    Player        @relation(fields: [playerId], references: [id])
+  monsters  TeamMonster[]
+  encounters Encounter[]
+
+  @@index([playerId])
+}
+
+model TeamMonster {
+  id        String  @id @default(cuid())
+  teamId    String
+  monsterId String
+  team      Team    @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  monster   Monster @relation(fields: [monsterId], references: [id])
+
+  @@unique([teamId, monsterId])
+  @@index([teamId])
+}
+
+model Encounter {
+  id              String   @id @default(cuid())
+  playerId        String
+  teamId          String
+  wildMonsterId   String
+  outcome         String
+  playerPower     Float
+  wildPower       Float
+  summary         String
+  rewardMonsterId String?
+  createdAt       DateTime @default(now())
+  player          Player   @relation(fields: [playerId], references: [id])
+  team            Team     @relation(fields: [teamId], references: [id])
+  wildMonster     Monster  @relation("WildMonster", fields: [wildMonsterId], references: [id])
+  rewardMonster   Monster? @relation("RewardMonster", fields: [rewardMonsterId], references: [id])
+
+  @@index([playerId, createdAt])
+}

@@ -1,0 +1,7 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs>
+  <rect width="256" height="256" rx="32" fill="#0f172a"/>
+  <path d="M74 154l42-76 24 50 46-38 16 44 42-30-30 60-56-24-28 50-28-32-12 26z" fill="url(#g)"/>
+  <path d="M102 80l16 42 54-12-46 30 22 52-44-36-34 28 18-52-34-22 48 4z" fill="#e0f2fe" opacity="0.8"/>
+  <text x="128" y="220" font-family="Arial" font-size="24" text-anchor="middle" fill="#fff">Storm Finch</text>
+</svg>
